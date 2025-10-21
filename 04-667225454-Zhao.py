@@ -148,7 +148,7 @@ while N <= N_MAX:
         if global_best_mse <= TARGET_MSE or tries >= MAX_TRIES:
             break
 
-    # stop if target hit or tries exhausted
+    # stop if target hit exhausted
     if global_best_mse <= TARGET_MSE:
         print(f"Reached target MSE {TARGET_MSE} at N={N}. Stopping.")
         break
@@ -156,10 +156,8 @@ while N <= N_MAX:
         print("Reached MAX_TRIES without hitting target; stopping.")
         break
 
-    # compute next capacity
     next_N = int(min(N_MAX, max(N + 1, int(N * CAPACITY_GROWTH))))
 
-    # if we can't grow further (already at N_MAX), stop search
     if next_N == N:
         print("Reached N_MAX and target not met; stopping search.")
         break
